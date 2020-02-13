@@ -175,8 +175,8 @@ class CityMap extends City {
 
   getStatesAbbrs() {
     const abbreviations = savedCities.reduce((states, city) => {
-      if(!states.includes(city.state)) { // if array does not include name of the state
-        return [...states, city.state];  // push the state into this array
+      if(!states.includes(city.state.toUpperCase())) { // if array does not include name of the state
+        return [...states, city.state.toUpperCase()];  // push the state into this array
       } else {
         return states;
       }
@@ -198,7 +198,7 @@ class CityMap extends City {
       alert('Please type in state abbreviation');
     } else {
       savedCities.forEach(city => {
-        if(city.state === state) {
+        if(city.state === state.toUpperCase()) {
           citiesInState.push(city.name);
         }
       });
@@ -327,7 +327,7 @@ DOM.searchByStateBtn.addEventListener('click', () => {
 
 DOM.addNewCityBtn.addEventListener('click', () => {
   const name = prompt('Name of a city', 'Chicago');
-  const state = prompt('Name of the state', 'IL');
+  const state = prompt('Name of the state', 'IL').toUpperCase();
   const lat = +prompt('Latitude', '41.87');
   const long = +prompt('Longitude', '87.62');
 
