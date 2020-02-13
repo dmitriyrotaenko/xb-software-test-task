@@ -94,9 +94,10 @@ class CityMap extends City {
 
   getSouthernMostCity() {
     // 0 is the southernmost poin on Earth
+    // i.e. latitude - 0
 
     let result = savedCities.reduce((prev, next) => {
-      return (Math.abs(next.latitude - 0) < Math.abs(prev.latitude - 0) ? next : prev)
+      return (Math.abs(next.latitude) < Math.abs(prev.latitude) ? next : prev)
     });
 
     console.log(`The southernmost city is ${result.name}`);
@@ -127,9 +128,9 @@ class CityMap extends City {
     let distances = []; // distances (km)
 
     let nameAndDistance = savedCities.map((city, index) => {
-      let cityName = savedCities[index].name;
-      let lat1 = savedCities[index].latitude;
-      let long1 = savedCities[index].longitude;
+      let cityName = city[index].name;
+      let lat1 = city[index].latitude;
+      let long1 = city[index].longitude;
       let lat2 = lat;
       let long2 = long;
 
