@@ -210,6 +210,8 @@ class CityMap extends City {
       result = `The city in this state: ${citiesInState.join().replace(/,/g, ', ')}`;
     } 
 
+    if(result === undefined) result = '';
+
     return result;
   }
 
